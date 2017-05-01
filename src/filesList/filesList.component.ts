@@ -18,8 +18,6 @@ export class FilesList {
 
   @Output() onRenameFile = new EventEmitter();
   @Output() onDeleteFile = new EventEmitter();
-  @Output() onPreviewFile = new EventEmitter();
-  @Output() onCropFile = new EventEmitter();
   @Output() onSelectFile = new EventEmitter();
 
   public removeTitle: string = 'Remove file';
@@ -71,22 +69,6 @@ export class FilesList {
    */
   public selectInversion() {
     this.files.map((file) => file.selected = !file.selected);
-  }
-
-  public openPreview(file: FileModel) {
-    let fileEvent: IFileEvent = {
-      eventName: 'onPreviewFile',
-      file: file
-    };
-    this.onPreviewFile.emit(fileEvent);
-  }
-
-  public openCrop(file: FileModel) {
-    let fileEvent: IFileEvent = {
-      eventName: 'onCropFile',
-      file: file
-    };
-    this.onCropFile.emit(fileEvent);
   }
 
   public clickImage(file: FileModel) {

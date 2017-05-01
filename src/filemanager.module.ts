@@ -8,9 +8,6 @@ import {ConfirmModule} from "angular2-bootstrap-confirm";
 import {FileManagerComponent} from "./filemanager.component";
 import {Toolbar} from "./toolbar/toolbar.component";
 import {FilesList} from "./filesList/filesList.component";
-import {ImageCropperComponent} from "ng2-img-cropper";
-import {CropComponent} from "./crop/crop.component";
-import {PreviewComponent} from "./preview/preview.component";
 import {Dropdown} from "./dropdown/dropdown.component";
 import {FileUploadModule} from "ng2-file-upload";
 import {FileManagerConfiguration} from "./configuration/fileManagerConfiguration.service";
@@ -33,11 +30,8 @@ import {TreeService} from "./configuration/tree.service";
     Toolbar,
     FilesList,
     Dropdown,
-    PreviewComponent,
-    CropComponent,
-    ImageCropperComponent
   ],
-  entryComponents: [ImageCropperComponent],
+  entryComponents: [],
   providers: [
     FileManagerConfiguration,
     FileManagerUploader,

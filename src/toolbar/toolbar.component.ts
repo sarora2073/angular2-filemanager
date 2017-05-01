@@ -56,14 +56,11 @@ export class Toolbar implements OnChanges {
    * List of filter types
    * @typeObserv {IFileTypeFilter[]}
    */
-  public typeFilterList: IFileTypeFilter[];
 
   public constructor(public configuration: FileManagerConfiguration,
                      public fileManagerUploader: FileManagerUploader) {
 
     this.fileManagerUploader.clear();
-
-    this.typeFilterList = configuration.fileTypesFilter;
 
     this.fileManagerUploader.uploader.onCompleteAll = () => {
       this.onUpload.emit(this.currentFolderId || '');
@@ -76,12 +73,6 @@ export class Toolbar implements OnChanges {
     this.searchField.valueChanges
       .debounceTime(250)
       .subscribe((value) => this.onSearchChange.emit(value));
-
-    this.typeFilterList.forEach((type) => {
-      if (type.defaultSelected) {
-        this.selectedType = type;
-      }
-    });
   }
 
   public ngOnChanges() {

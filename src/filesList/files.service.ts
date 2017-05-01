@@ -4,7 +4,6 @@ import {Observable} from "rxjs/Rx";
 import {IOuterFile} from "./interface/IOuterFile";
 import {IFileModel} from "./interface/IFileModel";
 import {FileManagerConfiguration} from "../configuration/fileManagerConfiguration.service";
-import {ICropBounds} from "../crop/ICropBounds";
 
 @Injectable()
 export class FilesService {
@@ -12,15 +11,6 @@ export class FilesService {
 
   public constructor(private http: Http, private configuration: FileManagerConfiguration) {
     this.url = configuration.fileUrl;
-  }
-
-  public crop(file: IFileModel, bounds: ICropBounds): Observable<IOuterFile[]> {
-    return this.http.put(this.url, {id: file.getId(), bounds: bounds})
-      .map((res: Response) => {
-        let body = res.json();
-
-        return body || [];
-      });
   }
 
   public load(folderId: string): Observable<IOuterFile[]> {

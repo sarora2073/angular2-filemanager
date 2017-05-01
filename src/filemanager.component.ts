@@ -13,7 +13,6 @@ import {IToolbarEvent} from "./toolbar/interface/IToolbarEvent";
 import {IFileModel} from "./filesList/interface/IFileModel";
 import {FileManagerConfiguration} from "./configuration/fileManagerConfiguration.service";
 import {IFileTypeFilter} from "./toolbar/interface/IFileTypeFilter";
-import {ICropBounds} from "./crop/ICropBounds";
 import {TreeService} from "./configuration/tree.service";
 
 @Component({
@@ -59,9 +58,6 @@ export class FileManagerComponent implements OnInit, OnChanges {
   public currentFolderId: string;
 
   public currentSelectedFile: IFileModel;
-
-  public isPreviewMode: boolean = false;
-  public isCropMode: boolean = false;
 
   public notificationOptions = {
     position: ["bottom", "right"],
@@ -219,37 +215,6 @@ export class FileManagerComponent implements OnInit, OnChanges {
   }
 
   @log
-  public onPreviewFile(fileEventData: IFileEvent) {
-    this.isPreviewMode = true;
-    this.currentSelectedFile = fileEventData.file;
-  }
-
-  @log
-  public onOpenCropFileEditor(fileEventData: IFileEvent) {
-    this.isCropMode = true;
-    this.currentSelectedFile = fileEventData.file;
-  }
-
-  @log
-  public onCropFile(event: any) {
-    let file: IFileModel = event.file;
-    let bounds: ICropBounds = event.bounds;
-
-    this.filesService.crop(file, bounds)
-      .subscribe(
-        (data: any) => {
-          file.fromJSON(data);
-          this.closeModal();
-          this.reloadFiles();
-          this.notifications.success('Crop Image', 'Image has been cropped');
-        },
-        () => {
-          this.notifications.error('Crop Image', 'Image has not been cropped');
-        }
-      );
-  }
-
-  @log
   public onSelectFile(event: FileModel) {
     this.onSingleFileSelect.next(event.getSelectData());
   }
@@ -298,21 +263,6 @@ export class FileManagerComponent implements OnInit, OnChanges {
   /***********************************************************************
    * OTHER FUNCTIONS
    **********************************************************************/
-  @HostListener('window:keydown', ['$event'])
-  public keyEvents(event: KeyboardEvent) {
-    if (this.isPreviewMode || this.isCropMode) {
-      if (event.keyCode === 27) {
-        this.closeModal();
-      }
-    }
-  }
-
-  public closeModal() {
-    this.isPreviewMode = false;
-    this.isCropMode = false;
-  }
-
-
   private loadFiles(folderId: string) {
     this.filesService.load(folderId)
       .subscribe((files: IOuterFile[]) => {
