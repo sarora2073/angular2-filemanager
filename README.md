@@ -1,59 +1,14 @@
 # Angular2 Filemanager
 
-This project is a very simple __Angular2 file manager__.
+Credits: Forked from qjon/angular2-filemanager
 
-## Features
-
-### v0.5.4
-
-* fix problem with open "choose file window" 
-
-### v0.5.3
-
-* use 0.8.1 version of _angular2-tree_
-
-### v0.5.2
-
-* use 0.7.0 version of _angular2-tree_
-
-### v0.5.1
-
-* use 0.6.2 version of _angular2-tree_
-* fix example
-
-### v0.5.0
-
-* add multi selection configuration
-* add _onSingleFileSelect_ event, which could be use to select file
-
-### v0.4.4
-
-* remove title from main template
-* fix crop example
-* fix preview
-* fix example API
-
-### v0.4.3
-
-* create _FileManagerUploader_ service to control upload files, it could be override by external module
-
-### v0.4.2
-
-* remove unnecessary export file
-
-### v0.4.1
-
-* manage directory structure
-* upload/delete files 
-* filter files in directory by mime types
-* search file in directory by name
-* preview files
+Purpose: Simple angular file manager that provides a directory tree and files, without preview / crop functionality.
 
 ## Installation
 
 Install npm package
 
-    npm i @rign/angular2-filemanager
+    npm i @sarora2073/angular2-filemanager
 
 ## Usage
   
@@ -90,6 +45,3 @@ To run demo you have to serve frontend and backend. To do this run:
         npm run backend
 
 ## TODO
-
-* files upload progress
-* multi selection events (delete, select)
