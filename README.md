@@ -2,7 +2,7 @@
 
 Credits: Forked from qjon/angular2-filemanager
 
-Purpose: Simple angular file manager that provides a directory tree and files, without preview / crop functionality.
+Purpose: Simple angular file manager that provides a directory tree and files, without preview / crop functionality in original source.
 
 ## Installation
 
