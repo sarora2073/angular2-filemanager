@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var formidable = require('formidable');
 var mime = require('mime-types');
-var easyimg = require('easyimage');
+// var easyimg = require('easyimage');
 
 var fs = require('fs');
 
@@ -234,15 +234,15 @@ app.put('/files', function (req, res) {
   if (isFile(fileId)) {
     if (bounds) {
       var src = path.join(basePath, fileId);
-      easyimg.crop({
-        src: src,
-        dst: src,
-        cropwidth: bounds.width,
-        cropheight: bounds.height,
-        x: bounds.x,
-        y: bounds.y,
-        gravity: 'NorthWest'
-      });
+      // easyimg.crop({
+      //   src: src,
+      //   dst: src,
+      //   cropwidth: bounds.width,
+      //   cropheight: bounds.height,
+      //   x: bounds.x,
+      //   y: bounds.y,
+      //   gravity: 'NorthWest'
+      // });
     }
     res.json(prepareFile(fileId));
   } else {
